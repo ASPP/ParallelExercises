@@ -18,7 +18,7 @@ from time import time
 #from IPython.kernel import client
 #mec = client.MultiEngineClient()
 
-from IPython.parallel import Client
+from ipyparallel import Client
 rc = Client()
 mec = rc[:]
 mec.block=True
