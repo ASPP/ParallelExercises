@@ -12,12 +12,7 @@ def mat_rowrange_mul(args):
 
     # a little ugly, but allows running with a Pool
     # which accept only 1 argument
-    a_row_domain = args[0]
-    a_shape = args[1]
-    b_shape = args[2]
-    shared_a = args[3]
-    shared_b = args[4]
-    shared_c = args[5]
+    a_row_domain, a_shape, b_shape, shared_a, shared_b, shared_c = args
 
     # access shared memory object as numpy array, set dimensions
     nd_c = ctypeslib.as_array(shared_c).reshape((a_shape[0],b_shape[1]))
@@ -49,7 +44,7 @@ if __name__ == '__main__':
     # allocate source and dest. arrays
     a = numpy.random.uniform(size=a_shape)
     b = numpy.random.uniform(size=b_shape)
-    c = numpy.zeros((x,x))
+    c = numpy.empty((x,x))
 
     # allocated shared memory
     shared_a = sharedctypes.Array(ctypes.c_double,a.flat,lock=False)

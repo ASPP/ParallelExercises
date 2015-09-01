@@ -21,10 +21,10 @@ step = x/num_cpus
 
 
 # scatter destination
-domain = numpy.zeros((step,y),dtype='d')
+domain = numpy.empty((step,y),dtype='d')
 
 # gather destination
-c = numpy.zeros((x,x),dtype='d')
+c = numpy.empty((x,x),dtype='d')
 
 
 print("CPU %d of %d: Hello world from %s!" % (rank,num_cpus, MPI.Get_processor_name()))
@@ -38,8 +38,8 @@ if rank==0:
 
 else:
     # target buffers
-    a = numpy.zeros((x,y),dtype='d')
-    b = numpy.zeros((y,x),dtype='d')
+    a = numpy.empty((x,y),dtype='d')
+    b = numpy.empty((y,x),dtype='d')
 
 
 t1 = time()

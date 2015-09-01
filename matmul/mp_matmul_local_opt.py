@@ -57,7 +57,7 @@ if __name__ == '__main__':
     t1 = time()
     tmp = p.map(mat_rowrange_mul, domains)
 
-    ans2 = numpy.zeros((x,x))
+    ans2 = numpy.empty((x,x))
 
     for i,domain in enumerate(domains):
         ans2[domain[0]:domain[1],:] = tmp[i]
