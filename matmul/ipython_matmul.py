@@ -12,6 +12,7 @@
 
 import subprocess
 import numpy
+import math
 from time import time
 
 # For older versions of ipython
@@ -32,8 +33,9 @@ mec.execute(init_code)
 #num_cpus = len(mec.get_ids())
 num_cpus = len(mec.targets)
 
-x = int(numpy.ceil(4000.0/num_cpus)*num_cpus)
-y = 200
+N = 4096
+x = math.ceil((N/num_cpus)*num_cpus)
+y = 256
 
 # Create a dictionary with objects to
 # send once to worker

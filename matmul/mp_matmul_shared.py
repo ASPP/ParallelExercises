@@ -36,9 +36,9 @@ def mat_rowrange_mul(args):
 if __name__ == '__main__':
 
 
-    x = 4000
-    # y = 2000
-    y = 200
+    x = 4096
+    # y = 2048
+    y = 256
 
     num_cpus = 2
     #num_cpus = 4

@@ -30,9 +30,9 @@ def mat_rowcol_mul(a_row):
 if __name__ == '__main__':
 
 
-    x = 4000
-    #y = 2000
-    y = 200
+    N = 4096
+    #y = 2048
+    y = 256
 
     num_cpus = 3
 

@@ -1,5 +1,6 @@
 from mpi4py import MPI
 import numpy
+import math
 from time import time
 
 # mpiexec -n X python mpi_matmul.py
@@ -10,9 +11,10 @@ rank = COMM.rank
 
 
 # get a dimension which is multiple of # of cpus
-x = int(numpy.ceil(4000.0/num_cpus)*num_cpus)
-#y = 2000
-y = 200
+N = 4096
+x = math.ceil((N/num_cpus)*num_cpus)
+#y = 2048
+y = 256
 print("x=%d" % x)
 
 step = x/num_cpus
