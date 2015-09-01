@@ -60,10 +60,10 @@ if __name__ == '__main__':
     nd_c = ctypeslib.as_array(shared_c).reshape((a_shape[0],b_shape[1]))
 
     # 1 process reference
-    print "starting."
+    print("starting.")
     t1 = time()
     ans1 = numpy.dot(a,b)
-    print "1 CPU:", time()-t1
+    print("1 CPU:", time()-t1)
     
     # x must be a multiple of num_cpus
     assert(x%num_cpus==0)
@@ -86,6 +86,6 @@ if __name__ == '__main__':
 
     ans2 = nd_c
 
-    print "%d CPUs:" % num_cpus, time()-t1
+    print("%d CPUs:" % num_cpus, time()-t1)
 
-    print "Same?:", numpy.alltrue(abs(ans1-ans2)<1e-11)
+    print("Same?:", numpy.alltrue(abs(ans1-ans2)<1e-11))

@@ -44,10 +44,10 @@ b = numpy.random.uniform(size=(y,x))
 # send second matrix to workers
 mec['b'] = b
 
-print "starting."
+print("starting.")
 t1 = time()
 ans1 = numpy.dot(a,b)
-print "1 CPU:", time()-t1
+print("1 CPU:", time()-t1)
 
 
 # This beautfial code is VERY slow
@@ -58,6 +58,6 @@ mec.scatter('a', a)
 mec.execute("c = numpy.dot(a,b)")
 ans2 = mec.gather('c')
 
-print "%d CPUs:" % num_cpus, time()-t1
+print("%d CPUs:" % num_cpus, time()-t1)
 
-print "Same?:", numpy.alltrue(abs(ans1-ans2)<1e-11)
+print("Same?:", numpy.alltrue(abs(ans1-ans2)<1e-11))

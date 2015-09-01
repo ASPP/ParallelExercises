@@ -13,7 +13,7 @@ rank = COMM.rank
 x = int(numpy.ceil(4000.0/num_cpus)*num_cpus)
 #y = 2000
 y = 200
-print "x=%d" % x
+print("x=%d" % x)
 
 step = x/num_cpus
 
@@ -25,7 +25,7 @@ domain = numpy.zeros((step,y),dtype='d')
 c = numpy.zeros((x,x),dtype='d')
 
 
-print "CPU %d of %d: Hello world from %s!" % (rank,num_cpus, MPI.Get_processor_name())
+print("CPU %d of %d: Hello world from %s!" % (rank,num_cpus, MPI.Get_processor_name()))
 
 if rank==0:
     # central source process
@@ -50,13 +50,13 @@ COMM.Gather([ans,MPI.DOUBLE],[c,MPI.DOUBLE])
 
 t2 = time()-t1
 if rank==0:
-    print "MPI matmul on %d CPUS (s)" % num_cpus, t2
+    print("MPI matmul on %d CPUS (s)" % num_cpus, t2)
 
 if rank==0:
     t1 = time()
     single_c = numpy.dot(a,b)
-    print "1 CPU (s)", time()-t1
+    print("1 CPU (s)", time()-t1)
 
     
-    print numpy.alltrue(abs(c-single_c)<1e-5)
+    print(numpy.alltrue(abs(c-single_c)<1e-5))
 

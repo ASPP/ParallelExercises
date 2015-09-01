@@ -11,4 +11,4 @@ elif rank == 1:
 else:
    data = None
 
-print "rank %d:"%rank, data
+print("rank %d:"%rank, data)

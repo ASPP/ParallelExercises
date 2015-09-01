@@ -1,6 +1,7 @@
 import multiprocessing
 import time
 import numpy.random
+from functools import reduce
 
 def f(n, a):
     factor = 5

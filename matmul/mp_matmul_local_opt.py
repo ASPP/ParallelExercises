@@ -42,10 +42,10 @@ if __name__ == '__main__':
     a = worker_globals['a'] = numpy.random.uniform(size=(x,y))
     b = worker_globals['b'] = numpy.random.uniform(size=(y,x))
 
-    print "starting."
+    print("starting.")
     t1 = time()
     ans1 = numpy.dot(a,b)
-    print "1 CPU:", time()-t1
+    print("1 CPU:", time()-t1)
     
     p = Pool(num_cpus,update_pool_global,(worker_globals,))
 
@@ -62,10 +62,10 @@ if __name__ == '__main__':
     for i,domain in enumerate(domains):
         ans2[domain[0]:domain[1],:] = tmp[i]
 
-    print "%d CPUs:" % num_cpus, time()-t1
+    print("%d CPUs:" % num_cpus, time()-t1)
 
     
 
     # ans2 needs a bit of reformatting
 
-    print "Same?:", numpy.alltrue(abs(ans1-ans2)<1e-11)
+    print("Same?:", numpy.alltrue(abs(ans1-ans2)<1e-11))

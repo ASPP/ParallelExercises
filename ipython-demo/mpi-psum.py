@@ -19,17 +19,17 @@ def pmean(a):
         N,
         op=MPI.SUM)
 
-    print n, N
+    print(n, N)
 
     MPI.COMM_WORLD.Allreduce(local_sum,
         s,
         op=MPI.SUM)
 
-    print local_sum, s
+    print(local_sum, s)
 
     return s/N
 
 if __name__=="__main__":
     
     a = np.random.normal(size=(10000,), loc=12345)
-    print pmean(a)
+    print(pmean(a))
