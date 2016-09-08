@@ -1,7 +1,9 @@
 #!/bin/bash
-#SBATCH --time=0:0:20 --mem=1G
-#SBATCH --ntasks=40
+#$ -V -N hello_world.py -cwd -o output.$JOB_NAME.$JOB_ID
 
-# Run with: sbatch hello_world.sh
+# Run with: qsub -pe mpislots N hello_world.sh
 
-mpirun python3 hello_world.py
+module load apps/anaconda3/2.5.0/bin
+module load mpi/openmpi/1.8.5/gcc-4.8.5
+
+mpirun python hello_world.py
