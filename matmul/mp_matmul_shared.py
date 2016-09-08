@@ -63,7 +63,7 @@ if __name__ == '__main__':
     # x must be a multiple of num_cpus
     assert(x%num_cpus==0)
 
-    step = x/num_cpus
+    step = x//num_cpus
 
     # define row domains for each process
     domains = zip(numpy.arange(0,x,step),numpy.arange(0,x,step)+step)
