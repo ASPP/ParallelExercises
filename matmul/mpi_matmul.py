@@ -12,12 +12,12 @@ rank = COMM.rank
 
 # get a dimension which is multiple of # of cpus
 N = 4096
-x = math.ceil((N/num_cpus)*num_cpus)
+x = N//num_cpus*num_cpus
 #y = 2048
 y = 256
 print("x=%d" % x)
 
-step = x/num_cpus
+step = x//num_cpus
 
 
 # scatter destination
