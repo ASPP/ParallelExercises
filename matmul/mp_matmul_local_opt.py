@@ -1,4 +1,4 @@
-from multiprocessing import Pool
+from multiprocessing import Pool, cpu_count
 import numpy
 from time import time
 
@@ -29,12 +29,11 @@ def mat_rowcol_mul(a_row):
 
 if __name__ == '__main__':
 
-
+    num_cpus = cpu_count()
     N = 4096
     #y = 2048
     y = 256
-
-    num_cpus = 3
+    x = N//num_cpus*num_cpus
 
     # Create a dictionary with objects to
     # send once to worker
@@ -50,7 +49,7 @@ if __name__ == '__main__':
     p = Pool(num_cpus,update_pool_global,(worker_globals,))
 
     #domains = ((0,999),(1000,1999),(2000,2999),(3000,3999))
-    step = x/num_cpus
+    step = x//num_cpus
     domains = zip(numpy.arange(0,x,step),numpy.arange(0,x,step)+step)
 
 
